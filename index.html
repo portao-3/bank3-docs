@@ -7,6 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>API Reference</title>
 
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/apple-touch-icon-144x144-002e072b.png" />
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="images/apple-touch-icon-152x152-a787baa9.png" />
+    <link rel="icon" type="image/png" href="images/favicon-32x32-1d8ebe24.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="images/favicon-16x16-c7cadbd2.png" sizes="16x16" />
+    <meta name="application-name" content="Portão 3 for Developers"/>
+
     <style media="screen">
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
@@ -279,7 +285,7 @@
   color: #859900;
 }
     </style>
-    <link href="stylesheets/screen-b1145cb6.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/screen-0e95cfa9.css" rel="stylesheet" media="screen" />
     <link href="stylesheets/print-953e3353.css" rel="stylesheet" media="print" />
       <script src="javascripts/all-e9bde216.js"></script>
 
@@ -296,7 +302,7 @@
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/logo-8247c284.svg" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
         </div>
@@ -336,6 +342,17 @@
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#http-status-code-summary" class="toc-h2 toc-link" data-title="HTTP Status Code Summary">HTTP Status Code Summary</a>
+                  </li>
+                  <li>
+                    <a href="#attributes" class="toc-h2 toc-link" data-title="Attributes">Attributes</a>
+                  </li>
+                  <li>
+                    <a href="#error-types" class="toc-h2 toc-link" data-title="Error Types">Error Types</a>
+                  </li>
+              </ul>
           </li>
       </ul>
     </div>
@@ -346,15 +363,15 @@
 <blockquote>
 <p><strong>POST</strong> https://api-cards.portao3.com.br/auth</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api-cards.portao3.com.br/auth'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">'{
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api-cards.portao3.com.br/auth <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-D</span> <span class="s1">'{
     "client_id": "",
     "client_secret": ""
-}'</span>
+  }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<p><strong>200</strong> Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"access_token"</span><span class="p">:</span><span class="w"> </span><span class="s2">"YourAccessTokenWillShowUpHere"</span><span class="p">,</span><span class="w">
@@ -373,20 +390,21 @@
 <blockquote>
 <p><strong>POST</strong> https://api-cards.portao3.com.br/cards</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">--location</span> <span class="nt">--request</span> POST <span class="s1">'https://api-cards.portao3.com.br/cards'</span> <span class="se">\</span>
-<span class="nt">--header</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
-<span class="nt">--data-raw</span> <span class="s1">'{
-  "amount": "",
-  "currency": "",
-  "maxPercentageApproval": "",
-  "minPercentageApproval": "",
-  "activatesAt": "",
-  "cancelsAt": "",
-  "custom_fields": "",
-}'</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api-cards.portao3.com.br/cards <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span> <span class="se">\</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "amount": "",
+    "currency": "",
+    "maxPercentageApproval": "",
+    "minPercentageApproval": "",
+    "activatesAt": "",
+    "cancelsAt": "",
+    "custom_fields": "",
+  }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<p><strong>201</strong> Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8frftfw3zZLyNqjzALTr"</span><span class="p">,</span><span class="w">
@@ -428,11 +446,12 @@
 <blockquote>
 <p><strong>GET</strong> https://api-cards.portao3.com.br/cards/{id}</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<p><strong>200</strong> Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8frftfw3zZLyNqjzALTr"</span><span class="p">,</span><span class="w">
@@ -459,12 +478,26 @@
 <blockquote>
 <p><strong>PUT</strong> https://api-cards.portao3.com.br/cards/{id}</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-X</span> DELETE
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {token}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
+  <span class="nt">-D</span> <span class="s1">'{
+    "amount": "",
+    "currency": "",
+    "maxPercentageApproval": "",
+    "minPercentageApproval": "",
+    "activatesAt": "",
+    "cancelsAt": "",
+    "custom_fields": [
+      {
+        "name": "",
+        "value": ""
+      }
+    ],
+  }'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<p><strong>200</strong> Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8frftfw3zZLyNqjzALTr"</span><span class="p">,</span><span class="w">
@@ -505,14 +538,15 @@
 <blockquote>
 <p><strong>DELETE</strong> https://api-cards.portao3.com.br/cards/{id}</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-cards.portao3.com.br/cards/{id}"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {token}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<p><strong>204</strong> Response</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="w">
-</span></code></pre></div>
+<div class="highlight"><pre class="highlight plaintext"><code>NO CONTENT
+</code></pre></div>
 <p>This will delete a virtual card and return any funds associated with it.</p>
 
 <p>When deleting a card, we make sure that it is no longer available to receive transactions. If it was already active, we will move any funds associated with it to the main account.</p>
@@ -520,11 +554,17 @@
 <blockquote>
 <p><strong>GET</strong> https://api-cards.portao3.com.br/cards</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-cards.portao3.com.br/cards/{id}"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {token}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> https://api-cards.portao3.com.br/cards <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
+  <span class="nt">-D</span> <span class="s1">'status=""'</span>
+  <span class="nt">-D</span> <span class="s1">'startsActivationAt=""'</span>
+  <span class="nt">-D</span> <span class="s1">'endsActivationAt=""'</span>
+  <span class="nt">-D</span> <span class="s1">'page=""'</span>
+  <span class="nt">-D</span> <span class="s1">'pageSize=""'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<p><strong>200</strong> Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -559,17 +599,23 @@
 <p>Filter for the end date a card is expected to be activated.</p>
 <h4 id='page'>page</h4>
 <p>Page number you are retrieving. Defaults to 1.</p>
-<h4 id='page_size'>page_size</h4>
+<h4 id='pagesize'>pageSize</h4>
 <p>Number of results you want in each page. Defaults to 20.</p>
 <h2 id='list-attached-transactions'>List attached transactions</h2>
 <blockquote>
 <p><strong>GET</strong> https://api-cards.portao3.com.br/cards/{id}/transactions</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"https://api-cards.portao3.com.br/cards/{id}/transactions"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: Bearer {token}"</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/transactions <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
+  <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
+  <span class="nt">-D</span> <span class="s1">'status=""'</span>
+  <span class="nt">-D</span> <span class="s1">'startsActivationAt=""'</span>
+  <span class="nt">-D</span> <span class="s1">'endsActivationAt=""'</span>
+  <span class="nt">-D</span> <span class="s1">'page=""'</span>
+  <span class="nt">-D</span> <span class="s1">'pageSize=""'</span>
 </code></pre></div>
 <blockquote>
-<p>Response</p>
+<p><strong>200</strong> Response</p>
 </blockquote>
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
@@ -597,66 +643,46 @@
 <p>Filter by the status for the transactions you are looking for.</p>
 <h4 id='page-2'>page</h4>
 <p>Page number you are retrieving. Defaults to 1.</p>
-<h4 id='page_size-2'>page_size</h4>
+<h4 id='pagesize-2'>pageSize</h4>
 <p>Number of results you want in each page. Defaults to 20.</p>
 <h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+<p>We use conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, invalid parameter, etc.). Codes in the 5xx range indicate an error with Portão 3&#39;s servers (these are rare).</p>
 
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
+<p>Some 4xx errors that could be handled programmatically (e.g., parameter invalid) include an error code that briefly explains the error reported.</p>
+<h3 id='http-status-code-summary'>HTTP Status Code Summary</h3><h4 id='200-ok'>200 - OK</h4>
+<p>Everything worked as expected.</p>
+<h4 id='400-bad-request'>400 - Bad Request</h4>
+<p>The request was unacceptable, often due to missing a required parameter, or invalid format for one.</p>
+<h4 id='401-unauthorized'>401 - Unauthorized</h4>
+<p>No valid API key provided.</p>
+<h4 id='402-request-failed'>402 - Request Failed</h4>
+<p>The parameters were valid but the request failed.</p>
+<h4 id='403-forbidden'>403 - Forbidden</h4>
+<p>The API key doesn&#39;t have permissions to perform the request.</p>
+<h4 id='404-not-found'>404 - Not Found</h4>
+<p>The requested resource doesn&#39;t exist.</p>
+<h4 id='409-conflict'>409 - Conflict</h4>
+<p>The request conflicts with another request (perhaps due to using the same idempotent key).</p>
+<h4 id='429-too-many-requests'>429 - Too Many Requests</h4>
+<p>Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.</p>
+<h4 id='500-502-503-504-server-errors'>500, 502, 503, 504 - Server Errors</h4>
+<p>Something went wrong on Portão 3&#39;s end. (These are rare.)</p>
+<h3 id='attributes'>Attributes</h3><h4 id='type'>type</h4>
+<p>The type of error returned. See below for options</p>
+<h4 id='message'>message</h4>
+<p>A human-readable message providing more details about the error. For card errors, these messages can be shown to your users.</p>
+<h4 id='param'>param</h4>
+<p>The parameter sent that caused the error.</p>
+<h3 id='error-types'>Error Types</h3><h4 id='authentication_error'>authentication_error</h4>
+<p>We&#39;ve received wrong credentials for this request. Usually this means you have provided work information for <code>client_id</code> and <code>client_secret</code>. Check this and try again.</p>
+<h4 id='invalid_request_error'>invalid_request_error</h4>
+<p>Invalid request errors arise when your request has invalid parameters.</p>
+<h4 id='validation_error'>validation_error</h4>
+<p>Errors triggered by our client-side libraries when failing to validate fields (e.g., when an amount, or expiration date is invalid or incomplete).</p>
+<h4 id='api_connection_error'>api_connection_error</h4>
+<p>Failure to connect to Portão 3&#39;s API.</p>
+<h4 id='api_error'>api_error</h4>
+<p>API errors cover any other type of problem (e.g., a temporary problem with Portão 3&#39;s servers), and are extremely uncommon.</p>
 
       </div>
       <div class="dark-box">
