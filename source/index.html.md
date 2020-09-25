@@ -3,13 +3,8 @@ title: API Reference
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -21,221 +16,345 @@ code_clipboard: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
-
 # Authentication
 
-> To authorize, use this code:
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
+> **POST** https://api-cards.portao3.com.br/auth
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl --location --request POST 'https://api-cards.portao3.com.br/auth' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "client_id": "",
+    "client_secret": ""
+}'
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
+> Response
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+{
+  "access_token": "YourAccessTokenWillShowUpHere",
+  "expires_in": 86400,
+  "token_type": "Bearer"
+}
 ```
 
-This endpoint retrieves all kittens.
+In order to ensure that only authorized users and applications are allowed access to the API, we make use of the [OAuth 2.0 authorization framework](https://tools.ietf.org/html/rfc6749).
 
-### HTTP Request
+OAuth 2 provides several grant types for different use cases. For server-side integration, we will use the Client Credentials Grant.
 
-`GET http://example.com/api/kittens`
+With Client Credentials Grant (defined in RFC 6749, section 4.4) an application can directly request an Access Token from the Authorization Server by using its Client Credentials (a Client Id and a Client Secret).
 
-### Query Parameters
+Ask support if you can't find your credentials.
 
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
+# Cards
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
+## Create a Card
 
-## Get a Specific Kitten
+> **POST** https://api-cards.portao3.com.br/cards
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
+```shell
+curl --location --request POST 'https://api-cards.portao3.com.br/cards' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+  "amount": "",
+  "currency": "",
+  "maxPercentageApproval": "",
+  "minPercentageApproval": "",
+  "activatesAt": "",
+  "cancelsAt": "",
+  "custom_fields": "",
+}'
 ```
 
-```python
-import kittn
+> Response
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+```json
+{
+  "id": "8frftfw3zZLyNqjzALTr",
+  "number": "5285326537172425",
+  "validation": "2022-07",
+  "cvc": "345",
+  "amount": 100,
+  "currency": "986",
+  "maxPercentageApproval": 1,
+  "minPercentageApproval": 0,
+  "activatesAt": "2021-07-01",
+  "cancelsAt": "2021-08-10",
+  "custom_fields": [
+    {
+      "name": "cost_center",
+      "value": "HR"
+    }
+  ]
+}
 ```
+
+This will issue a new virtual card number.
+
+For security reasons, this will be the only response we are able to show you the virtual card number information, so please make sure you do all required treatments with this information on your side at this time.
+
+### Parameters
+
+#### amount **REQUIRED**
+
+The amount for which the card should be generated, in cents.
+
+#### currency
+
+The currency that the card will be transacted. Use [ISO 4217](https://pt.wikipedia.org/wiki/ISO_4217) codes as reference. Defaults to 986.
+
+#### maxPercentageApproval
+
+The maximum authorization amount that will be available for approval. Should be a number greater than 0. Defaults to 1.
+
+#### minPercentageApproval
+
+The minimum authorization amount that will be available for approval. Should be a number between 0 and 1. Defaults to 0.
+
+#### activatesAt **REQUIRED**
+
+The date for which the card will be activated. Should be greater or equal than today.
+
+#### cancelsAt **REQUIRED**
+
+The date for which the card will be cancelled automatically. Should be greater than activation date.
+
+#### custom_fields
+
+Any custom fields you could use for future referral.
+
+## Retrieve a Card
+
+> **GET** https://api-cards.portao3.com.br/cards/{id}
 
 ```shell
 curl "http://example.com/api/kittens/2"
   -H "Authorization: meowmeowmeow"
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
+  "id": "8frftfw3zZLyNqjzALTr",
+  "amount": 100,
+  "currency": "986",
+  "maxPercentageApproval": 1,
+  "minPercentageApproval": 0,
+  "activatesAt": "2021-07-01",
+  "cancelsAt": "2021-08-10",
+  "custom_fields": [
+    {
+      "name": "cost_center",
+      "value": "HR"
+    }
+  ]
 }
 ```
 
-This endpoint retrieves a specific kitten.
+This will retrieve a virtual card parameters.
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
+Please notice that this service will not return the virtual card information (such as number, validation and cvc). This information is only shown once, when you create a new card.
 
-### HTTP Request
+### Parameters
 
-`GET http://example.com/kittens/<ID>`
+#### id **REQUIRED**
 
-### URL Parameters
+Card ID
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
+## Update a Card
 
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
-```
+> **PUT** https://api-cards.portao3.com.br/cards/{id}
 
 ```shell
 curl "http://example.com/api/kittens/2"
   -X DELETE
-  -H "Authorization: meowmeowmeow"
+  -H "Authorization: Bearer {token}"
 ```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
+> Response
 
 ```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "id": "8frftfw3zZLyNqjzALTr",
+  "amount": 100,
+  "currency": "986",
+  "maxPercentageApproval": 1,
+  "minPercentageApproval": 0,
+  "activatesAt": "2021-07-01",
+  "cancelsAt": "2021-08-10",
+  "custom_fields": [
+    {
+      "name": "cost_center",
+      "value": "HR"
+    }
+  ]
 }
 ```
 
-This endpoint deletes a specific kitten.
+Will update a virtual card parameters.
 
-### HTTP Request
+While updating a credit card information, you are able to change all the usage parameters, including amounts, dates, and custom fields.
 
-`DELETE http://example.com/kittens/<ID>`
+By changing the dates or the amounts of an active card, we will move any funds or change the status for this card as required, so it automatically reflect's the new information you provided.
 
-### URL Parameters
+### Parameters
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+#### amount **REQUIRED**
 
+The amount for which the card should be generated, in cents.
+
+#### currency
+
+The currency that the card will be transacted. Use [ISO 4217](https://pt.wikipedia.org/wiki/ISO_4217) codes as reference. Defaults to 986.
+
+#### maxPercentageApproval
+
+The maximum authorization amount that will be available for approval. Should be a number greater than 0. Defaults to 1.
+
+#### minPercentageApproval
+
+The minimum authorization amount that will be available for approval. Should be a number between 0 and 1. Defaults to 0.
+
+#### activatesAt **REQUIRED**
+
+The date for which the card will be activated. Should be greater or equal than today.
+
+#### cancelsAt **REQUIRED**
+
+The date for which the card will be cancelled automatically. Should be greater than activation date.
+
+#### custom_fields
+
+Any custom fields you could use for future referral.
+
+## Delete a Card
+
+> **DELETE** https://api-cards.portao3.com.br/cards/{id}
+
+```shell
+curl "https://api-cards.portao3.com.br/cards/{id}"
+  -H "Authorization: Bearer {token}"
+```
+
+> Response
+
+```json
+
+```
+
+This will delete a virtual card and return any funds associated with it.
+
+When deleting a card, we make sure that it is no longer available to receive transactions. If it was already active, we will move any funds associated with it to the main account.
+
+## List all cards
+
+> **GET** https://api-cards.portao3.com.br/cards
+
+```shell
+curl "https://api-cards.portao3.com.br/cards/{id}"
+  -H "Authorization: Bearer {token}"
+```
+
+> Response
+
+```json
+{
+  "data": [
+    {
+      "id":"8frftfw3zZLyNqjzALTr",
+      "amount": 100,
+      "currency": "986",
+      "maxPercentageApproval": 1,
+      "minPercentageApproval": 0,
+      "activatesAt": "2021-07-01",
+      "cancelsAt": "2021-08-10",
+      "custom_fields": [
+        {
+          "name": "cost_center",
+          "value": "HR"
+        }
+      ]
+    },
+    {...},
+    {...}
+  ],
+  "page": 1,
+  "records": 20
+}
+```
+
+Returns a list of cards you’ve previously issued. The cards are returned in sorted order, with the earlier activation date appearing first.
+
+### Parameters
+
+#### status
+
+Filter by the status for the cards you are looking for.
+
+#### startsActivationAt
+
+Filter for the initial date a card is expected to be activated.
+
+#### endsActivationAt
+
+Filter for the end date a card is expected to be activated.
+
+#### page
+
+Page number you are retrieving. Defaults to 1.
+
+#### page_size
+
+Number of results you want in each page. Defaults to 20.
+
+## List attached transactions
+
+> **GET** https://api-cards.portao3.com.br/cards/{id}/transactions
+
+```shell
+curl "https://api-cards.portao3.com.br/cards/{id}/transactions"
+  -H "Authorization: Bearer {token}"
+```
+
+> Response
+
+```json
+{
+  "data": [
+    {
+      "id": "U0RPiQB8XcYnyEu6Kput",
+      "date_time": 1598274503,
+      "merchant_name": "ibis",
+      "merchant_city": "São Paulo",
+      "merchant_country": "Brasil",
+      "mcc": "7011",
+      "amount": 100,
+      "currency": "986",
+      "auth_code": "123456",
+      "response_code": 0
+    },
+    {...},
+    {...}
+  ],
+  "page": 1,
+  "records": 3
+}
+```
+
+Fetch a list of transactions that are associated to a card.
+
+### Parameters
+
+#### status
+
+Filter by the status for the transactions you are looking for.
+
+#### page
+
+Page number you are retrieving. Defaults to 1.
+
+#### page_size
+
+Number of results you want in each page. Defaults to 20.
