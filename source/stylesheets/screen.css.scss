@@ -60,6 +60,11 @@ body {
   bottom: 0;
   width: $nav-width;
   background-color: $nav-bg;
+
+  -webkit-box-shadow: inset -3px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: inset -3px 0px 10px 0px rgba(0, 0, 0, 0.1);
+  box-shadow: inset -3px 0px 10px 0px rgba(0, 0, 0, 0.1);
+
   font-size: 13px;
   font-weight: bold;
 
@@ -75,8 +80,10 @@ body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 100%;
-    margin-bottom: $logo-margin;
+    max-width: 45%;
+    margin-left: $nav-padding;
+    margin-top: $nav-padding;
+    margin-bottom: $nav-padding;
   }
 
   & > .search {
@@ -593,11 +600,25 @@ body {
   }
 
   blockquote {
+    background-color: $code-annotation-bg;
+    border: 1px solid $code-bg;
+    border-top-left-radius: $border-radius-code;
+    border-top-right-radius: $border-radius-code;
+
     & > p {
-      background-color: $code-annotation-bg;
       padding: $code-annotation-padding 2em;
       color: #eee;
     }
+  }
+
+  div.highlight + blockquote {
+    border-radius: 0px !important;
+  }
+
+  div.highlight + blockquote + div.highlight > pre {
+    box-shadow: 0 0 0 1px var(rgba(0, 0, 0, 0.07));
+    border-bottom-left-radius: $border-radius-code;
+    border-bottom-right-radius: $border-radius-code;
   }
 }
 
@@ -680,4 +701,29 @@ body {
 
 .copy-clipboard:hover {
   opacity: 0.8;
+}
+
+.highlight {
+  color: #f5fbff !important;
+
+  .nt,
+  .o,
+  .nb {
+    color: #a4cdfe !important;
+  }
+
+  .s1,
+  .s2 {
+    color: #85d996 !important;
+  }
+
+  .nl,
+  .err,
+  .se {
+    color: #f5fbff !important;
+  }
+
+  .mi {
+    color: #e56f4a !important;
+  }
 }

@@ -1,22 +1,79 @@
 # Errors
 
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
+We use conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, invalid parameter, etc.). Codes in the 5xx range indicate an error with Portão 3's servers (these are rare).
 
-The Kittn API uses the following error codes:
+Some 4xx errors that could be handled programmatically (e.g., parameter invalid) include an error code that briefly explains the error reported.
 
+### HTTP Status Code Summary
 
-Error Code | Meaning
----------- | -------
-400 | Bad Request -- Your request is invalid.
-401 | Unauthorized -- Your API key is wrong.
-403 | Forbidden -- The kitten requested is hidden for administrators only.
-404 | Not Found -- The specified kitten could not be found.
-405 | Method Not Allowed -- You tried to access a kitten with an invalid method.
-406 | Not Acceptable -- You requested a format that isn't json.
-410 | Gone -- The kitten requested has been removed from our servers.
-418 | I'm a teapot.
-429 | Too Many Requests -- You're requesting too many kittens! Slow down!
-500 | Internal Server Error -- We had a problem with our server. Try again later.
-503 | Service Unavailable -- We're temporarily offline for maintenance. Please try again later.
+#### 200 - OK
+
+Everything worked as expected.
+
+#### 400 - Bad Request
+
+The request was unacceptable, often due to missing a required parameter, or invalid format for one.
+
+#### 401 - Unauthorized
+
+No valid API key provided.
+
+#### 402 - Request Failed
+
+The parameters were valid but the request failed.
+
+#### 403 - Forbidden
+
+The API key doesn't have permissions to perform the request.
+
+#### 404 - Not Found
+
+The requested resource doesn't exist.
+
+#### 409 - Conflict
+
+The request conflicts with another request (perhaps due to using the same idempotent key).
+
+#### 429 - Too Many Requests
+
+Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.
+
+#### 500, 502, 503, 504 - Server Errors
+
+Something went wrong on Portão 3's end. (These are rare.)
+
+### Attributes
+
+#### type
+
+The type of error returned. See below for options
+
+#### message
+
+A human-readable message providing more details about the error. For card errors, these messages can be shown to your users.
+
+#### param
+
+The parameter sent that caused the error.
+
+### Error Types
+
+#### authentication_error
+
+We've received wrong credentials for this request. Usually this means you have provided work information for `client_id` and `client_secret`. Check this and try again.
+
+#### invalid_request_error
+
+Invalid request errors arise when your request has invalid parameters.
+
+#### validation_error
+
+Errors triggered by our client-side libraries when failing to validate fields (e.g., when an amount, or expiration date is invalid or incomplete).
+
+#### api_connection_error
+
+Failure to connect to Portão 3's API.
+
+#### api_error
+
+API errors cover any other type of problem (e.g., a temporary problem with Portão 3's servers), and are extremely uncommon.

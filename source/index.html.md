@@ -21,15 +21,15 @@ code_clipboard: true
 > **POST** https://api-cards.portao3.com.br/auth
 
 ```shell
-curl --location --request POST 'https://api-cards.portao3.com.br/auth' \
---header 'Content-Type: application/json' \
---data-raw '{
+curl -X POST https://api-cards.portao3.com.br/auth \
+  -H 'Content-Type: application/json' \
+  -D '{
     "client_id": "",
     "client_secret": ""
-}'
+  }'
 ```
 
-> Response
+> **200** Response
 
 ```json
 {
@@ -54,20 +54,21 @@ Ask support if you can't find your credentials.
 > **POST** https://api-cards.portao3.com.br/cards
 
 ```shell
-curl --location --request POST 'https://api-cards.portao3.com.br/cards' \
---header 'Content-Type: application/json' \
---data-raw '{
-  "amount": "",
-  "currency": "",
-  "maxPercentageApproval": "",
-  "minPercentageApproval": "",
-  "activatesAt": "",
-  "cancelsAt": "",
-  "custom_fields": "",
-}'
+curl -X POST https://api-cards.portao3.com.br/cards \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}' \
+  -D '{
+    "amount": "",
+    "currency": "",
+    "maxPercentageApproval": "",
+    "minPercentageApproval": "",
+    "activatesAt": "",
+    "cancelsAt": "",
+    "custom_fields": "",
+  }'
 ```
 
-> Response
+> **201** Response
 
 ```json
 {
@@ -129,11 +130,12 @@ Any custom fields you could use for future referral.
 > **GET** https://api-cards.portao3.com.br/cards/{id}
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+curl -X GET https://api-cards.portao3.com.br/cards/{id} \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}'
 ```
 
-> Response
+> **200** Response
 
 ```json
 {
@@ -168,12 +170,26 @@ Card ID
 > **PUT** https://api-cards.portao3.com.br/cards/{id}
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: Bearer {token}"
+curl -X PUT https://api-cards.portao3.com.br/cards/{id} \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}'
+  -D '{
+    "amount": "",
+    "currency": "",
+    "maxPercentageApproval": "",
+    "minPercentageApproval": "",
+    "activatesAt": "",
+    "cancelsAt": "",
+    "custom_fields": [
+      {
+        "name": "",
+        "value": ""
+      }
+    ],
+  }'
 ```
 
-> Response
+> **200** Response
 
 ```json
 {
@@ -234,14 +250,15 @@ Any custom fields you could use for future referral.
 > **DELETE** https://api-cards.portao3.com.br/cards/{id}
 
 ```shell
-curl "https://api-cards.portao3.com.br/cards/{id}"
-  -H "Authorization: Bearer {token}"
+curl -X DELETE https://api-cards.portao3.com.br/cards/{id} \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}'
 ```
 
-> Response
+> **204** Response
 
-```json
-
+```text
+NO CONTENT
 ```
 
 This will delete a virtual card and return any funds associated with it.
@@ -253,11 +270,17 @@ When deleting a card, we make sure that it is no longer available to receive tra
 > **GET** https://api-cards.portao3.com.br/cards
 
 ```shell
-curl "https://api-cards.portao3.com.br/cards/{id}"
-  -H "Authorization: Bearer {token}"
+curl -G https://api-cards.portao3.com.br/cards \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}'
+  -D 'status=""'
+  -D 'startsActivationAt=""'
+  -D 'endsActivationAt=""'
+  -D 'page=""'
+  -D 'pageSize=""'
 ```
 
-> Response
+> **200** Response
 
 ```json
 {
@@ -305,7 +328,7 @@ Filter for the end date a card is expected to be activated.
 
 Page number you are retrieving. Defaults to 1.
 
-#### page_size
+#### pageSize
 
 Number of results you want in each page. Defaults to 20.
 
@@ -314,11 +337,17 @@ Number of results you want in each page. Defaults to 20.
 > **GET** https://api-cards.portao3.com.br/cards/{id}/transactions
 
 ```shell
-curl "https://api-cards.portao3.com.br/cards/{id}/transactions"
-  -H "Authorization: Bearer {token}"
+curl -G https://api-cards.portao3.com.br/cards/{id}/transactions \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}'
+  -D 'status=""'
+  -D 'startsActivationAt=""'
+  -D 'endsActivationAt=""'
+  -D 'page=""'
+  -D 'pageSize=""'
 ```
 
-> Response
+> **200** Response
 
 ```json
 {
@@ -355,6 +384,6 @@ Filter by the status for the transactions you are looking for.
 
 Page number you are retrieving. Defaults to 1.
 
-#### page_size
+#### pageSize
 
 Number of results you want in each page. Defaults to 20.
