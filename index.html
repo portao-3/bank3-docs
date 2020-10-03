@@ -361,9 +361,9 @@
       <div class="content">
         <h1 id='introduction'>Introduction</h1><h1 id='authentication'>Authentication</h1>
 <blockquote>
-<p><strong>POST</strong> https://api-cards.portao3.com.br/auth</p>
+<p><strong>POST</strong> https://api.bank3.com.br/auth</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api-cards.portao3.com.br/auth <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.bank3.com.br/auth <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-D</span> <span class="s1">'{
     "client_id": "",
@@ -388,9 +388,9 @@
 <p>Ask support if you can&#39;t find your credentials.</p>
 <h1 id='cards'>Cards</h1><h2 id='create-a-card'>Create a Card</h2>
 <blockquote>
-<p><strong>POST</strong> https://api-cards.portao3.com.br/cards</p>
+<p><strong>POST</strong> https://api.bank3.com.br/cards</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api-cards.portao3.com.br/cards <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> POST https://api.bank3.com.br/cards <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span> <span class="se">\</span>
   <span class="nt">-D</span> <span class="s1">'{
@@ -444,9 +444,9 @@
 <p>Any custom fields you could use for future referral.</p>
 <h2 id='retrieve-a-card'>Retrieve a Card</h2>
 <blockquote>
-<p><strong>GET</strong> https://api-cards.portao3.com.br/cards/{id}</p>
+<p><strong>GET</strong> https://api.bank3.com.br/cards/{id}</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> GET https://api.bank3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
 </code></pre></div>
@@ -476,9 +476,9 @@
 <p>Card ID</p>
 <h2 id='update-a-card'>Update a Card</h2>
 <blockquote>
-<p><strong>PUT</strong> https://api-cards.portao3.com.br/cards/{id}</p>
+<p><strong>PUT</strong> https://api.bank3.com.br/cards/{id}</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> PUT https://api.bank3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
   <span class="nt">-D</span> <span class="s1">'{
@@ -536,9 +536,9 @@
 <p>Any custom fields you could use for future referral.</p>
 <h2 id='delete-a-card'>Delete a Card</h2>
 <blockquote>
-<p><strong>DELETE</strong> https://api-cards.portao3.com.br/cards/{id}</p>
+<p><strong>DELETE</strong> https://api.bank3.com.br/cards/{id}</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-X</span> DELETE https://api.bank3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
 </code></pre></div>
@@ -552,9 +552,9 @@
 <p>When deleting a card, we make sure that it is no longer available to receive transactions. If it was already active, we will move any funds associated with it to the main account.</p>
 <h2 id='list-all-cards'>List all cards</h2>
 <blockquote>
-<p><strong>GET</strong> https://api-cards.portao3.com.br/cards</p>
+<p><strong>GET</strong> https://api.bank3.com.br/cards</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> https://api-cards.portao3.com.br/cards <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> https://api.bank3.com.br/cards <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
   <span class="nt">-D</span> <span class="s1">'status=""'</span>
@@ -603,9 +603,9 @@
 <p>Number of results you want in each page. Defaults to 20.</p>
 <h2 id='list-attached-transactions'>List attached transactions</h2>
 <blockquote>
-<p><strong>GET</strong> https://api-cards.portao3.com.br/cards/{id}/transactions</p>
+<p><strong>GET</strong> https://api.bank3.com.br/cards/{id}/transactions</p>
 </blockquote>
-<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> https://api-cards.portao3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/transactions <span class="se">\</span>
+<div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="nt">-G</span> https://api.bank3.com.br/cards/<span class="o">{</span><span class="nb">id</span><span class="o">}</span>/transactions <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Content-Type: application/json'</span> <span class="se">\</span>
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
   <span class="nt">-D</span> <span class="s1">'status=""'</span>
@@ -646,7 +646,7 @@
 <h4 id='pagesize-2'>pageSize</h4>
 <p>Number of results you want in each page. Defaults to 20.</p>
 <h1 id='errors'>Errors</h1>
-<p>We use conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, invalid parameter, etc.). Codes in the 5xx range indicate an error with Portão 3&#39;s servers (these are rare).</p>
+<p>We use conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, invalid parameter, etc.). Codes in the 5xx range indicate an error with Bank 3&#39;s servers (these are rare).</p>
 
 <p>Some 4xx errors that could be handled programmatically (e.g., parameter invalid) include an error code that briefly explains the error reported.</p>
 <h3 id='http-status-code-summary'>HTTP Status Code Summary</h3><h4 id='200-ok'>200 - OK</h4>
@@ -666,7 +666,7 @@
 <h4 id='429-too-many-requests'>429 - Too Many Requests</h4>
 <p>Too many requests hit the API too quickly. We recommend an exponential backoff of your requests.</p>
 <h4 id='500-502-503-504-server-errors'>500, 502, 503, 504 - Server Errors</h4>
-<p>Something went wrong on Portão 3&#39;s end. (These are rare.)</p>
+<p>Something went wrong on Bank 3&#39;s end. (These are rare.)</p>
 <h3 id='attributes'>Attributes</h3><h4 id='type'>type</h4>
 <p>The type of error returned. See below for options</p>
 <h4 id='message'>message</h4>
@@ -680,9 +680,9 @@
 <h4 id='validation_error'>validation_error</h4>
 <p>Errors triggered by our client-side libraries when failing to validate fields (e.g., when an amount, or expiration date is invalid or incomplete).</p>
 <h4 id='api_connection_error'>api_connection_error</h4>
-<p>Failure to connect to Portão 3&#39;s API.</p>
+<p>Failure to connect to Bank 3&#39;s API.</p>
 <h4 id='api_error'>api_error</h4>
-<p>API errors cover any other type of problem (e.g., a temporary problem with Portão 3&#39;s servers), and are extremely uncommon.</p>
+<p>API errors cover any other type of problem (e.g., a temporary problem with Bank 3&#39;s servers), and are extremely uncommon.</p>
 
       </div>
       <div class="dark-box">
