@@ -18,10 +18,10 @@ code_clipboard: true
 
 # Authentication
 
-> **POST** https://api-cards.portao3.com.br/auth
+> **POST** https://api.bank3.com.br/auth
 
 ```shell
-curl -X POST https://api-cards.portao3.com.br/auth \
+curl -X POST https://api.bank3.com.br/auth \
   -H 'Content-Type: application/json' \
   -D '{
     "client_id": "",
@@ -51,10 +51,10 @@ Ask support if you can't find your credentials.
 
 ## Create a Card
 
-> **POST** https://api-cards.portao3.com.br/cards
+> **POST** https://api.bank3.com.br/cards
 
 ```shell
-curl -X POST https://api-cards.portao3.com.br/cards \
+curl -X POST https://api.bank3.com.br/cards \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer {token}' \
   -D '{
@@ -127,10 +127,10 @@ Any custom fields you could use for future referral.
 
 ## Retrieve a Card
 
-> **GET** https://api-cards.portao3.com.br/cards/{id}
+> **GET** https://api.bank3.com.br/cards/{id}
 
 ```shell
-curl -X GET https://api-cards.portao3.com.br/cards/{id} \
+curl -X GET https://api.bank3.com.br/cards/{id} \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer {token}'
 ```
@@ -167,10 +167,10 @@ Card ID
 
 ## Update a Card
 
-> **PUT** https://api-cards.portao3.com.br/cards/{id}
+> **PUT** https://api.bank3.com.br/cards/{id}
 
 ```shell
-curl -X PUT https://api-cards.portao3.com.br/cards/{id} \
+curl -X PUT https://api.bank3.com.br/cards/{id} \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer {token}'
   -D '{
@@ -247,10 +247,10 @@ Any custom fields you could use for future referral.
 
 ## Delete a Card
 
-> **DELETE** https://api-cards.portao3.com.br/cards/{id}
+> **DELETE** https://api.bank3.com.br/cards/{id}
 
 ```shell
-curl -X DELETE https://api-cards.portao3.com.br/cards/{id} \
+curl -X DELETE https://api.bank3.com.br/cards/{id} \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer {token}'
 ```
@@ -267,10 +267,10 @@ When deleting a card, we make sure that it is no longer available to receive tra
 
 ## List all cards
 
-> **GET** https://api-cards.portao3.com.br/cards
+> **GET** https://api.bank3.com.br/cards
 
 ```shell
-curl -G https://api-cards.portao3.com.br/cards \
+curl -G https://api.bank3.com.br/cards \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer {token}'
   -D 'status=""'
@@ -334,10 +334,10 @@ Number of results you want in each page. Defaults to 20.
 
 ## List attached transactions
 
-> **GET** https://api-cards.portao3.com.br/cards/{id}/transactions
+> **GET** https://api.bank3.com.br/cards/{id}/transactions
 
 ```shell
-curl -G https://api-cards.portao3.com.br/cards/{id}/transactions \
+curl -G https://api.bank3.com.br/cards/{id}/transactions \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer {token}'
   -D 'status=""'

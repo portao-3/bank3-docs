@@ -1,6 +1,6 @@
 # Errors
 
-We use conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, invalid parameter, etc.). Codes in the 5xx range indicate an error with Portão 3's servers (these are rare).
+We use conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, invalid parameter, etc.). Codes in the 5xx range indicate an error with Bank 3's servers (these are rare).
 
 Some 4xx errors that could be handled programmatically (e.g., parameter invalid) include an error code that briefly explains the error reported.
 
@@ -40,7 +40,7 @@ Too many requests hit the API too quickly. We recommend an exponential backoff o
 
 #### 500, 502, 503, 504 - Server Errors
 
-Something went wrong on Portão 3's end. (These are rare.)
+Something went wrong on Bank 3's end. (These are rare.)
 
 ### Attributes
 
@@ -72,8 +72,8 @@ Errors triggered by our client-side libraries when failing to validate fields (e
 
 #### api_connection_error
 
-Failure to connect to Portão 3's API.
+Failure to connect to Bank 3's API.
 
 #### api_error
 
-API errors cover any other type of problem (e.g., a temporary problem with Portão 3's servers), and are extremely uncommon.
+API errors cover any other type of problem (e.g., a temporary problem with Bank 3's servers), and are extremely uncommon.
