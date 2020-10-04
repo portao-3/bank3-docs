@@ -23,10 +23,10 @@ under the License.
 ////////////////////
 $nav-bg: #f9fafc !default;
 $examples-bg: #fff !default;
-$code-bg: #4f566b !default;
-$code-annotation-bg: #3c4257 !default;
+$code-bg: #2d2b55 !default;
+$code-annotation-bg: #1e1e3f !default;
 $nav-subitem-bg: transparent !default;
-$nav-active-bg: #43418e !default;
+$nav-active-bg: white !default;
 $nav-active-parent-bg: transparent !default; // parent links of the current section
 $lang-select-border: #000 !default;
 $lang-select-bg: #1e2224 !default;
@@ -42,16 +42,16 @@ $alert-color: #e56f4a !default;
 // TEXT COLORS
 ////////////////////
 $main-text: #444444 !default; // main content text color
-$nav-text: #43418e !default;
-$nav-active-text: #fff !default;
-$nav-active-parent-text: #43418e !default; // parent links of the current section
-$lang-select-text: #fff !default; // color of unselected language tab text
+$nav-text: white !default;
+$nav-active-text: black !default;
+$nav-active-parent-text: white !default; // parent links of the current section
+$lang-select-text: white !default; // color of unselected language tab text
 $lang-select-active-text: #fff !default; // color of selected language tab text
 $lang-select-pressed-text: #fff !default; // color of language tab text when mouse is pressed
 
 // SIZES
 ////////////////////
-$nav-width: 230px !default; // width of the navbar
+$nav-width: 250px !default; // width of the navbar
 $content-width: 50% !default;
 $content-spacing: 5% !default;
 $examples-width: 45% !default; // portion of the screen taken up by code examples
@@ -66,7 +66,7 @@ $h1-margin-bottom: 21px !default; // padding under the largest header tags
 $tablet-width: 930px !default; // min width before reverting to tablet size
 $phone-width: $tablet-width - $nav-width !default; // min width before reverting to mobile size
 
-$border-radius-code: 8px !default;
+$border-radius-code: 5px !default;
 
 // FONTS
 ////////////////////

@@ -7,6 +7,7 @@ language_tabs: # must be one of https://git.io/vQNgJ
 toc_footers:
 
 includes:
+  - transactionStatus
   - errors
 
 search: true
@@ -15,6 +16,12 @@ code_clipboard: true
 ---
 
 # Introduction
+
+The Bank 3 API is organized around [REST](https://www.w3.org/TR/2004/NOTE-ws-arch-20040211/#relwwwrest). Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.
+
+You can use the Bank 3 API in test mode, which does not affect your live data or interact with the banking networks. The client credentials you use to authenticate the request determines whether the request is live mode or test mode.
+
+The Bank 3 API differs for every account as we release new versions and tailor functionality. These docs are customized to your version of the API and display your test key and test data, which only you can see.
 
 # Authentication
 
@@ -33,7 +40,7 @@ curl -X POST https://api.bank3.com.br/auth \
 
 ```json
 {
-  "access_token": "YourAccessTokenWillShowUpHere",
+  "access_token": "Your_Access_Token_Will_Show_Up_Here",
   "expires_in": 86400,
   "token_type": "Bearer"
 }
@@ -64,7 +71,9 @@ curl -X POST https://api.bank3.com.br/cards \
     "minPercentageApproval": "",
     "activatesAt": "",
     "cancelsAt": "",
-    "custom_fields": "",
+    "custom_fields": {
+      "": ""
+    },
   }'
 ```
 
@@ -82,12 +91,9 @@ curl -X POST https://api.bank3.com.br/cards \
   "minPercentageApproval": 0,
   "activatesAt": "2021-07-01",
   "cancelsAt": "2021-08-10",
-  "custom_fields": [
-    {
-      "name": "cost_center",
-      "value": "HR"
-    }
-  ]
+  "custom_fields": {
+    "cost_center": "HR"
+  }
 }
 ```
 
@@ -146,12 +152,9 @@ curl -X GET https://api.bank3.com.br/cards/{id} \
   "minPercentageApproval": 0,
   "activatesAt": "2021-07-01",
   "cancelsAt": "2021-08-10",
-  "custom_fields": [
-    {
-      "name": "cost_center",
-      "value": "HR"
-    }
-  ]
+  "custom_fields": {
+    "cost_center": "HR"
+  }
 }
 ```
 
@@ -180,12 +183,9 @@ curl -X PUT https://api.bank3.com.br/cards/{id} \
     "minPercentageApproval": "",
     "activatesAt": "",
     "cancelsAt": "",
-    "custom_fields": [
-      {
-        "name": "",
-        "value": ""
-      }
-    ],
+    "custom_fields": {
+      "": ""
+    },
   }'
 ```
 
@@ -200,12 +200,9 @@ curl -X PUT https://api.bank3.com.br/cards/{id} \
   "minPercentageApproval": 0,
   "activatesAt": "2021-07-01",
   "cancelsAt": "2021-08-10",
-  "custom_fields": [
-    {
-      "name": "cost_center",
-      "value": "HR"
-    }
-  ]
+  "custom_fields": {
+    "cost_center": "HR"
+  }
 }
 ```
 
@@ -293,12 +290,9 @@ curl -G https://api.bank3.com.br/cards \
       "minPercentageApproval": 0,
       "activatesAt": "2021-07-01",
       "cancelsAt": "2021-08-10",
-      "custom_fields": [
-        {
-          "name": "cost_center",
-          "value": "HR"
-        }
-      ]
+      "custom_fields": {
+        "cost_center": "HR"
+      }
     },
     {...},
     {...}

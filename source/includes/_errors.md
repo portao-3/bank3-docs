@@ -68,7 +68,7 @@ Invalid request errors arise when your request has invalid parameters.
 
 #### validation_error
 
-Errors triggered by our client-side libraries when failing to validate fields (e.g., when an amount, or expiration date is invalid or incomplete).
+Errors triggered when failing to validate fields (e.g., when an amount, or expiration date is invalid or incomplete).
 
 #### api_connection_error
 

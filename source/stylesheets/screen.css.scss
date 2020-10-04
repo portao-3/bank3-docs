@@ -59,7 +59,16 @@ body {
   left: 0;
   bottom: 0;
   width: $nav-width;
-  background-color: $nav-bg;
+
+  background: rgb(145, 139, 193);
+  background: linear-gradient(
+    45deg,
+    rgba(145, 139, 193, 1) 0%,
+    rgba(173, 154, 199, 1) 25%,
+    rgba(222, 153, 178, 1) 50%,
+    rgba(244, 154, 146, 1) 75%,
+    rgba(255, 204, 127, 1) 100%
+  );
 
   -webkit-box-shadow: inset -3px 0px 10px 0px rgba(0, 0, 0, 0.1);
   -moz-box-shadow: inset -3px 0px 10px 0px rgba(0, 0, 0, 0.1);
@@ -80,33 +89,38 @@ body {
   // This is the logo at the top of the ToC
   .logo {
     display: block;
-    max-width: 45%;
+    max-width: 40%;
     margin-left: $nav-padding;
     margin-top: $nav-padding;
-    margin-bottom: $nav-padding;
+    margin-bottom: 30px;
   }
 
   & > .search {
     position: relative;
 
     input {
-      background: $nav-bg;
+      background: transparent;
       border-width: 0 0 1px 0;
-      border-color: $search-box-border-color;
+      border-color: white;
       padding: 6px 0 6px 20px;
       box-sizing: border-box;
       margin: $nav-v-padding $nav-padding;
       width: $nav-width - ($nav-padding * 2);
       outline: none;
-      color: $nav-text;
-      border-radius: 0; /* ios has a default border radius */
+      color: white;
+      border-radius: 0;
+
+      &::placeholder {
+        color: white;
+        opacity: 0.8;
+      }
     }
 
     &:before {
       position: absolute;
       top: 17px;
       left: $nav-padding;
-      color: $nav-text;
+      color: white;
       @extend %icon-search;
     }
   }
@@ -163,6 +177,7 @@ body {
   .toc-link.active {
     background-color: $nav-active-bg;
     color: $nav-active-text;
+    mix-blend-mode: screen;
   }
 
   // this is parent links of the currently selected ToC entry
@@ -337,6 +352,7 @@ body {
   // to place content above the dark box
   position: relative;
   z-index: 30;
+  padding: 50px 0;
 
   &:after {
     content: "";
@@ -351,6 +367,7 @@ body {
   & > h5,
   & > h6,
   & > p,
+  & > details,
   & > table,
   & > ul,
   & > ol,
@@ -428,6 +445,14 @@ body {
   h5,
   h6 {
     font-size: 10px;
+  }
+
+  summary {
+    @extend %header-font;
+    font-size: 10px;
+    margin-top: 2.5em;
+    margin-bottom: 0.8em;
+    cursor: pointer;
   }
 
   h4 strong {
@@ -709,12 +734,12 @@ body {
   .nt,
   .o,
   .nb {
-    color: #a4cdfe !important;
+    color: #ff628c !important;
   }
 
   .s1,
   .s2 {
-    color: #85d996 !important;
+    color: #fad000 !important;
   }
 
   .nl,
@@ -724,6 +749,6 @@ body {
   }
 
   .mi {
-    color: #e56f4a !important;
+    color: #a5ff90 !important;
   }
 }
