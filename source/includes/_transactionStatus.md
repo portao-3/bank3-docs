@@ -12,7 +12,11 @@ You have ran out of funds or credit for this transactions to get approved. You c
 
 #### 63 Security Violation on Credit Card or Machine
 
-The merchant tried a transaction with the wrong CVV code. You could ask the merchant to retry with the right code a second time.
+The merchant tried to transaction with the wrong CVV code. You could ask the merchant to retry with the right code a second time.
+
+#### 125 Blocked Card
+
+The card is current inactive per your activation configuration. You could either ask the merchant to retry at a different date or activate the card in the API ou admin dashboard.
 
 <details>
   <summary>All Codes</summary>

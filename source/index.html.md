@@ -54,6 +54,68 @@ With Client Credentials Grant (defined in RFC 6749, section 4.4) an application 
 
 Ask support if you can't find your credentials.
 
+# Organization
+
+## Retrieve an Organization
+
+> **GET** https://api.bank3.com.br/organization
+
+```shell
+curl -X GET https://api.bank3.com.br/organization \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}'
+```
+
+> **200** Response
+
+```json
+{
+  "id": "zkIAT5N3g69FAl6OUMnd",
+  "organization": {
+    "document": "00000000000000",
+    "legal_name": "ACME LTDA",
+    "trading_name": "ACME",
+    "business_type": "LTDA",
+    "founding_date": "2010-01-01",
+    "address": {
+      "street": "Avenida Landscape",
+      "number": "100",
+      "complement": "12o Andar",
+      "neighborhood": "Centro",
+      "postal_code": "38400000",
+      "city": "São Paulo",
+      "state": "SP"
+    },
+    "phone_number": "34984325252",
+    "email": "fernando@portao3.com.br",
+    "main_activity": "74.90-1-04"
+  }
+}
+```
+
+This will retrieve the users' organization information.
+
+## Retrieve Balance
+
+> **GET** https://api.bank3.com.br/organization/balance
+
+```shell
+curl -X GET https://api.bank3.com.br/organization/balance \
+  -H 'Content-Type: application/json' \
+  -H 'Authorization: Bearer {token}'
+```
+
+> **200** Response
+
+```json
+{
+  "balance": 100,
+  "currency": 986
+}
+```
+
+This will retrieve the users' organization current balance.
+
 # Cards
 
 ## Create a Card
