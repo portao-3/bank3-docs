@@ -145,7 +145,7 @@ curl -X POST https://api.bank3.com.br/cards \
 {
   "id": "8frftfw3zZLyNqjzALTr",
   "number": "5285326537172425",
-  "validation": "2022-07",
+  "expiration": "07/22",
   "cvv": "345",
   "amount": 100,
   "currency": "986",
@@ -222,7 +222,7 @@ curl -X GET https://api.bank3.com.br/cards/{id} \
 
 This will retrieve a virtual card parameters.
 
-Please notice that this service will not return the virtual card information (such as number, validation and cvv). This information is only shown once, when you create a new card.
+Please notice that this service will not return the virtual card information (such as number, expiration and cvv). This information is only shown once, when you create a new card.
 
 ### Parameters
 
