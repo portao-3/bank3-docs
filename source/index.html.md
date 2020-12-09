@@ -208,12 +208,17 @@ curl -X GET https://api.bank3.com.br/cards/{id} \
 ```json
 {
   "id": "8frftfw3zZLyNqjzALTr",
+  "env": "live",
+  "number": "231024******6688",
+  "expiration": "11/2022",
   "amount": 100,
   "currency": "986",
+  "balance": 100,
   "maxPercentageApproval": 1,
   "minPercentageApproval": 0,
   "activatesAt": "2021-07-01",
   "cancelsAt": "2021-08-10",
+  "status": "ACTIVE",
   "custom_fields": {
     "cost_center": "HR"
   }
@@ -352,6 +357,7 @@ curl -G https://api.bank3.com.br/cards \
       "minPercentageApproval": 0,
       "activatesAt": "2021-07-01",
       "cancelsAt": "2021-08-10",
+      "status": "ACTIVE",
       "custom_fields": {
         "cost_center": "HR"
       }
@@ -396,9 +402,7 @@ Number of results you want in each page. Defaults to 20.
 curl -G https://api.bank3.com.br/cards/{id}/transactions \
   -H 'Content-Type: application/json' \
   -H 'Authorization: Bearer {token}'
-  -D 'status=""'
-  -D 'startsActivationAt=""'
-  -D 'endsActivationAt=""'
+  -D 'response_code=""'
   -D 'page=""'
   -D 'pageSize=""'
 ```
