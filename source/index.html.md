@@ -341,7 +341,7 @@ curl -G https://api.bank3.com.br/cards \
   -D 'startsActivationAt=""'
   -D 'endsActivationAt=""'
   -D 'page=""'
-  -D 'pageSize=""'
+  -D 'page_size=""'
 ```
 
 > **200** Response
@@ -390,7 +390,7 @@ Filter for the end date a card is expected to be activated.
 
 Page number you are retrieving. Defaults to 1.
 
-#### pageSize
+#### page_size
 
 Number of results you want in each page. Defaults to 20.
 
@@ -404,7 +404,7 @@ curl -G https://api.bank3.com.br/cards/{id}/transactions \
   -H 'Authorization: Bearer {token}'
   -D 'response_code=""'
   -D 'page=""'
-  -D 'pageSize=""'
+  -D 'page_size=""'
 ```
 
 > **200** Response
@@ -444,6 +444,6 @@ Filter by the status for the transactions you are looking for.
 
 Page number you are retrieving. Defaults to 1.
 
-#### pageSize
+#### page_size
 
 Number of results you want in each page. Defaults to 20.
