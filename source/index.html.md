@@ -21,8 +21,6 @@ The Bank 3 API is organized around [REST](https://www.w3.org/TR/2004/NOTE-ws-arc
 
 You can use the Bank 3 API in test mode, which does not affect your live data or interact with the banking networks. The client credentials you use to authenticate the request determines whether the request is live mode or test mode.
 
-The Bank 3 API differs for every account as we release new versions and tailor functionality. These docs are customized to your version of the API and display your test key and test data, which only you can see.
-
 # Authentication
 
 > **POST** https://api.bank3.com.br/auth
@@ -52,7 +50,7 @@ OAuth 2 provides several grant types for different use cases. For server-side in
 
 With Client Credentials Grant (defined in RFC 6749, section 4.4) an application can directly request an Access Token from the Authorization Server by using its Client Credentials (a Client Id and a Client Secret).
 
-Ask support if you can't find your credentials.
+You can create new credentials and manage existing ones in your account dashboard.
 
 # Organization
 

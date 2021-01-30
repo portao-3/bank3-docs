@@ -1,3 +1,7 @@
+# Service Status
+
+We provide a full status page you can follow to check any updates on the status of our APIs and the overall infrastructure. Check it out [here](https://status.bank3.com.br).
+
 # Transaction Status
 
 When checking for transactions, you will receive a `response_code`, this are all the possible responses you will get. The most common ones are:
@@ -17,6 +21,10 @@ The merchant tried to transaction with the wrong CVV code. You could ask the mer
 #### 125 Blocked Card
 
 The card is current inactive per your activation configuration. You could either ask the merchant to retry at a different date or activate the card in the API ou admin dashboard.
+
+### 190 Card not found - expiry date mismatch
+
+The transaction failed because the wrong expiration date was provided. You should ask the merchant to retry with the correct information.
 
 <details>
   <summary>All Codes</summary>

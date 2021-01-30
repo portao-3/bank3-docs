@@ -6,7 +6,7 @@ Some 4xx errors that could be handled programmatically (e.g., parameter invalid)
 
 ### HTTP Status Code Summary
 
-#### 200 - OK
+#### 200, 201, 202, 204 - Successful
 
 Everything worked as expected.
 
