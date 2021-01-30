@@ -352,7 +352,15 @@
               </ul>
           </li>
           <li>
+            <a href="#service-status" class="toc-h1 toc-link" data-title="Service Status">Service Status</a>
+          </li>
+          <li>
             <a href="#transaction-status" class="toc-h1 toc-link" data-title="Transaction Status">Transaction Status</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#190-card-not-found-expiry-date-mismatch" class="toc-h2 toc-link" data-title="190 Card not found - expiry date mismatch">190 Card not found - expiry date mismatch</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
@@ -377,8 +385,6 @@
 <p>The Bank 3 API is organized around <a href="https://www.w3.org/TR/2004/NOTE-ws-arch-20040211/#relwwwrest">REST</a>. Our API has predictable resource-oriented URLs, accepts form-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes, authentication, and verbs.</p>
 
 <p>You can use the Bank 3 API in test mode, which does not affect your live data or interact with the banking networks. The client credentials you use to authenticate the request determines whether the request is live mode or test mode.</p>
-
-<p>The Bank 3 API differs for every account as we release new versions and tailor functionality. These docs are customized to your version of the API and display your test key and test data, which only you can see.</p>
 <h1 id='authentication'>Authentication</h1>
 <blockquote>
 <p><strong>POST</strong> https://api.bank3.com.br/auth</p>
@@ -405,7 +411,7 @@
 
 <p>With Client Credentials Grant (defined in RFC 6749, section 4.4) an application can directly request an Access Token from the Authorization Server by using its Client Credentials (a Client Id and a Client Secret).</p>
 
-<p>Ask support if you can&#39;t find your credentials.</p>
+<p>You can create new credentials and manage existing ones in your account dashboard.</p>
 <h1 id='organization'>Organization</h1><h2 id='retrieve-an-organization'>Retrieve an Organization</h2>
 <blockquote>
 <p><strong>GET</strong> https://api.bank3.com.br/organization</p>
@@ -708,6 +714,8 @@
 <p>Page number you are retrieving. Defaults to 1.</p>
 <h4 id='page_size-2'>page_size</h4>
 <p>Number of results you want in each page. Defaults to 20.</p>
+<h1 id='service-status'>Service Status</h1>
+<p>We provide a full status page you can follow to check any updates on the status of our APIs and the overall infrastructure. Check it out <a href="https://status.bank3.com.br">here</a>.</p>
 <h1 id='transaction-status'>Transaction Status</h1>
 <p>When checking for transactions, you will receive a <code>response_code</code>, this are all the possible responses you will get. The most common ones are:</p>
 <h4 id='0-approved'>0 Approved</h4>
@@ -718,6 +726,8 @@
 <p>The merchant tried to transaction with the wrong CVV code. You could ask the merchant to retry with the right code a second time.</p>
 <h4 id='125-blocked-card'>125 Blocked Card</h4>
 <p>The card is current inactive per your activation configuration. You could either ask the merchant to retry at a different date or activate the card in the API ou admin dashboard.</p>
+<h3 id='190-card-not-found-expiry-date-mismatch'>190 Card not found - expiry date mismatch</h3>
+<p>The transaction failed because the wrong expiration date was provided. You should ask the merchant to retry with the correct information.</p>
 
 <details>
   <summary>All Codes</summary>
@@ -987,7 +997,7 @@
 <p>We use conventional HTTP response codes to indicate the success or failure of an API request. In general: Codes in the 2xx range indicate success. Codes in the 4xx range indicate an error that failed given the information provided (e.g., a required parameter was omitted, invalid parameter, etc.). Codes in the 5xx range indicate an error with Bank 3&#39;s servers (these are rare).</p>
 
 <p>Some 4xx errors that could be handled programmatically (e.g., parameter invalid) include an error code that briefly explains the error reported.</p>
-<h3 id='http-status-code-summary'>HTTP Status Code Summary</h3><h4 id='200-ok'>200 - OK</h4>
+<h3 id='http-status-code-summary'>HTTP Status Code Summary</h3><h4 id='200-201-202-204-successful'>200, 201, 202, 204 - Successful</h4>
 <p>Everything worked as expected.</p>
 <h4 id='400-bad-request'>400 - Bad Request</h4>
 <p>The request was unacceptable, often due to missing a required parameter, or invalid format for one.</p>
