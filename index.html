@@ -728,10 +728,6 @@
 <h4 id='page_size-2'>page_size</h4>
 <p>Number of results you want in each page. Defaults to 20.</p>
 <h1 id='transactions'>Transactions</h1><h2 id='transaction-callback'>Transaction Callback</h2>
-<p>After we process a transaction, we can make a callback call to an API provided by you. It works pretty much in real time and it will have all the transaction data you may need to make financial reconciliation on your end.</p>
-
-<p>It will always be a POST call with the same payload, you may also provide a key that will be sent in the Authorization header.</p>
-
 <blockquote>
 <p><strong>POST</strong> https://example.com/transactions</p>
 </blockquote>
@@ -748,7 +744,11 @@
   </span><span class="nl">"response_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
   </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre></div><h2 id='transaction-status'>Transaction Status</h2>
+</span></code></pre></div>
+<p>After we process a transaction, we can make a callback call to an API provided by you. It works pretty much in real time and it will have all the transaction data you may need to make financial reconciliation on your end.</p>
+
+<p>It will always be a POST call with the same payload, you may also provide a key that will be sent in the Authorization header.</p>
+<h2 id='transaction-status'>Transaction Status</h2>
 <p>When checking for transactions, you will receive a <code>response_code</code>, this are all the possible responses you will get. The most common ones are:</p>
 <h4 id='0-approved'>0 Approved</h4>
 <p>Successfull transaction. You don&#39;t need to do anything.</p>
