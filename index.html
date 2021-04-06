@@ -352,13 +352,13 @@
               </ul>
           </li>
           <li>
-            <a href="#service-status" class="toc-h1 toc-link" data-title="Service Status">Service Status</a>
-          </li>
-          <li>
-            <a href="#transaction-status" class="toc-h1 toc-link" data-title="Transaction Status">Transaction Status</a>
+            <a href="#transactions" class="toc-h1 toc-link" data-title="Transactions">Transactions</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#190-card-not-found-expiry-date-mismatch" class="toc-h2 toc-link" data-title="190 Card not found - expiry date mismatch">190 Card not found - expiry date mismatch</a>
+                    <a href="#transaction-callback" class="toc-h2 toc-link" data-title="Transaction Callback">Transaction Callback</a>
+                  </li>
+                  <li>
+                    <a href="#transaction-status" class="toc-h2 toc-link" data-title="Transaction Status">Transaction Status</a>
                   </li>
               </ul>
           </li>
@@ -375,6 +375,9 @@
                     <a href="#error-types" class="toc-h2 toc-link" data-title="Error Types">Error Types</a>
                   </li>
               </ul>
+          </li>
+          <li>
+            <a href="#service-status" class="toc-h1 toc-link" data-title="Service Status">Service Status</a>
           </li>
       </ul>
     </div>
@@ -473,6 +476,7 @@
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span> <span class="se">\</span>
   <span class="nt">-D</span> <span class="s1">'{
     "amount": "",
+    type: "",
     "currency": "",
     "maxPercentageApproval": "",
     "minPercentageApproval": "",
@@ -492,6 +496,7 @@
   </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"07/22"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"cvv"</span><span class="p">:</span><span class="w"> </span><span class="s2">"345"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"maxPercentageApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"minPercentageApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -507,6 +512,8 @@
 <p>For security reasons, this will be the only response we are able to show you the virtual card number information, so please make sure you do all required treatments with this information on your side at this time.</p>
 <h3 id='parameters'>Parameters</h3><h4 id='amount-required'>amount <strong>REQUIRED</strong></h4>
 <p>The amount for which the card should be generated, in cents.</p>
+<h4 id='type'>type</h4>
+<p>Defines what kind of merchant will be able to use this card. Needs to be one of our pre-defined types: DEFAULT, HOTEL, FLIGHT, NATIONAL or INTERNATIONAL. Defaults to DEFAULT.</p>
 <h4 id='currency'>currency</h4>
 <p>The currency that the card will be transacted. Use <a href="https://pt.wikipedia.org/wiki/ISO_4217">ISO 4217</a> codes as reference. Defaults to 986.</p>
 <h4 id='maxpercentageapproval'>maxPercentageApproval</h4>
@@ -536,6 +543,7 @@
   </span><span class="nl">"number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"231024******6688"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"expiration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"11/2022"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"balance"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
   </span><span class="nl">"maxPercentageApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
@@ -562,6 +570,7 @@
   <span class="nt">-H</span> <span class="s1">'Authorization: Bearer {token}'</span>
   <span class="nt">-D</span> <span class="s1">'{
     "amount": "",
+    "type": "",
     "currency": "",
     "maxPercentageApproval": "",
     "minPercentageApproval": "",
@@ -578,6 +587,7 @@
 <div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8frftfw3zZLyNqjzALTr"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986"</span><span class="p">,</span><span class="w">
   </span><span class="nl">"maxPercentageApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="nl">"minPercentageApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -595,6 +605,8 @@
 <p>By changing the dates or the amounts of an active card, we will move any funds or change the status for this card as required, so it automatically reflect&#39;s the new information you provided.</p>
 <h3 id='parameters-3'>Parameters</h3><h4 id='amount-required-2'>amount <strong>REQUIRED</strong></h4>
 <p>The amount for which the card should be generated, in cents.</p>
+<h4 id='type-2'>type</h4>
+<p>Defines what kind of merchant will be able to use this card. Needs to be one of our pre-defined types: DEFAULT, HOTEL, FLIGHT, NATIONAL or INTERNATIONAL. Defaults to DEFAULT.</p>
 <h4 id='currency-2'>currency</h4>
 <p>The currency that the card will be transacted. Use <a href="https://pt.wikipedia.org/wiki/ISO_4217">ISO 4217</a> codes as reference. Defaults to 986.</p>
 <h4 id='maxpercentageapproval-2'>maxPercentageApproval</h4>
@@ -644,6 +656,7 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="nl">"id"</span><span class="p">:</span><span class="s2">"8frftfw3zZLyNqjzALTr"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span><span class="w">
+      </span><span class="nl">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"DEFAULT"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">"986"</span><span class="p">,</span><span class="w">
       </span><span class="nl">"maxPercentageApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
       </span><span class="nl">"minPercentageApproval"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
@@ -714,9 +727,28 @@
 <p>Page number you are retrieving. Defaults to 1.</p>
 <h4 id='page_size-2'>page_size</h4>
 <p>Number of results you want in each page. Defaults to 20.</p>
-<h1 id='service-status'>Service Status</h1>
-<p>We provide a full status page you can follow to check any updates on the status of our APIs and the overall infrastructure. Check it out <a href="https://status.bank3.com.br">here</a>.</p>
-<h1 id='transaction-status'>Transaction Status</h1>
+<h1 id='transactions'>Transactions</h1><h2 id='transaction-callback'>Transaction Callback</h2>
+<p>After we process a transaction, we can make a callback call to an API provided by you. It works pretty much in real time and it will have all the transaction data you may need to make financial reconciliation on your end.</p>
+
+<p>It will always be a POST call with the same payload, you may also provide a key that will be sent in the Authorization header.</p>
+
+<blockquote>
+<p><strong>POST</strong> https://example.com/transactions</p>
+</blockquote>
+<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"card_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"date_time"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchant_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchant_city"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchant_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"merchant_country"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"mcc"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"amount"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"currency"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"response_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nl">"external_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div><h2 id='transaction-status'>Transaction Status</h2>
 <p>When checking for transactions, you will receive a <code>response_code</code>, this are all the possible responses you will get. The most common ones are:</p>
 <h4 id='0-approved'>0 Approved</h4>
 <p>Successfull transaction. You don&#39;t need to do anything.</p>
@@ -726,7 +758,7 @@
 <p>The merchant tried to transaction with the wrong CVV code. You could ask the merchant to retry with the right code a second time.</p>
 <h4 id='125-blocked-card'>125 Blocked Card</h4>
 <p>The card is current inactive per your activation configuration. You could either ask the merchant to retry at a different date or activate the card in the API ou admin dashboard.</p>
-<h3 id='190-card-not-found-expiry-date-mismatch'>190 Card not found - expiry date mismatch</h3>
+<h4 id='190-card-not-found-expiry-date-mismatch'>190 Card not found - expiry date mismatch</h4>
 <p>The transaction failed because the wrong expiration date was provided. You should ask the merchant to retry with the correct information.</p>
 
 <details>
@@ -1031,6 +1063,8 @@
 <p>Failure to connect to Bank 3&#39;s API.</p>
 <h4 id='api_error'>api_error</h4>
 <p>API errors cover any other type of problem (e.g., a temporary problem with Bank 3&#39;s servers), and are extremely uncommon.</p>
+<h1 id='service-status'>Service Status</h1>
+<p>We provide a full status page you can follow to check any updates on the status of our APIs and the overall infrastructure. Check it out <a href="https://status.bank3.com.br">here</a>.</p>
 
       </div>
       <div class="dark-box">
