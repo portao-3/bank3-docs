@@ -2,10 +2,6 @@
 
 ## Transaction Callback
 
-After we process a transaction, we can make a callback call to an API provided by you. It works pretty much in real time and it will have all the transaction data you may need to make financial reconciliation on your end.
-
-It will always be a POST call with the same payload, you may also provide a key that will be sent in the Authorization header.
-
 > **POST** https://example.com/transactions
 
 ```json
@@ -23,6 +19,10 @@ It will always be a POST call with the same payload, you may also provide a key 
   "external_id": ""
 }
 ```
+
+After we process a transaction, we can make a callback call to an API provided by you. It works pretty much in real time and it will have all the transaction data you may need to make financial reconciliation on your end.
+
+It will always be a POST call with the same payload, you may also provide a key that will be sent in the Authorization header.
 
 ## Transaction Status
 
