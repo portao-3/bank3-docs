@@ -126,6 +126,7 @@ curl -X POST https://api.bank3.com.br/cards \
   -H 'Authorization: Bearer {token}' \
   -D '{
     "amount": "",
+    type: "",
     "currency": "",
     "maxPercentageApproval": "",
     "minPercentageApproval": "",
@@ -146,6 +147,7 @@ curl -X POST https://api.bank3.com.br/cards \
   "expiration": "07/22",
   "cvv": "345",
   "amount": 100,
+  "type": "DEFAULT",
   "currency": "986",
   "maxPercentageApproval": 1,
   "minPercentageApproval": 0,
@@ -166,6 +168,10 @@ For security reasons, this will be the only response we are able to show you the
 #### amount **REQUIRED**
 
 The amount for which the card should be generated, in cents.
+
+#### type
+
+Defines what kind of merchant will be able to use this card. Needs to be one of our pre-defined types: DEFAULT, HOTEL, FLIGHT, NATIONAL or INTERNATIONAL. Defaults to DEFAULT.
 
 #### currency
 
@@ -210,6 +216,7 @@ curl -X GET https://api.bank3.com.br/cards/{id} \
   "number": "231024******6688",
   "expiration": "11/2022",
   "amount": 100,
+  "type": "DEFAULT",
   "currency": "986",
   "balance": 100,
   "maxPercentageApproval": 1,
@@ -243,6 +250,7 @@ curl -X PUT https://api.bank3.com.br/cards/{id} \
   -H 'Authorization: Bearer {token}'
   -D '{
     "amount": "",
+    "type": "",
     "currency": "",
     "maxPercentageApproval": "",
     "minPercentageApproval": "",
@@ -260,6 +268,7 @@ curl -X PUT https://api.bank3.com.br/cards/{id} \
 {
   "id": "8frftfw3zZLyNqjzALTr",
   "amount": 100,
+  "type": "DEFAULT",
   "currency": "986",
   "maxPercentageApproval": 1,
   "minPercentageApproval": 0,
@@ -282,6 +291,10 @@ By changing the dates or the amounts of an active card, we will move any funds o
 #### amount **REQUIRED**
 
 The amount for which the card should be generated, in cents.
+
+#### type
+
+Defines what kind of merchant will be able to use this card. Needs to be one of our pre-defined types: DEFAULT, HOTEL, FLIGHT, NATIONAL or INTERNATIONAL. Defaults to DEFAULT.
 
 #### currency
 
@@ -350,6 +363,7 @@ curl -G https://api.bank3.com.br/cards \
     {
       "id":"8frftfw3zZLyNqjzALTr",
       "amount": 100,
+      "type": "DEFAULT",
       "currency": "986",
       "maxPercentageApproval": 1,
       "minPercentageApproval": 0,

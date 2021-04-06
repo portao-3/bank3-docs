@@ -1,8 +1,30 @@
-# Service Status
+# Transactions
 
-We provide a full status page you can follow to check any updates on the status of our APIs and the overall infrastructure. Check it out [here](https://status.bank3.com.br).
+## Transaction Callback
 
-# Transaction Status
+After we process a transaction, we can make a callback call to an API provided by you. It works pretty much in real time and it will have all the transaction data you may need to make financial reconciliation on your end.
+
+It will always be a POST call with the same payload, you may also provide a key that will be sent in the Authorization header.
+
+> **POST** https://example.com/transactions
+
+```json
+{
+  "card_id": "",
+  "date_time": "",
+  "merchant_name": "",
+  "merchant_city": "",
+  "merchant_id": "",
+  "merchant_country": "",
+  "mcc": "",
+  "amount": "",
+  "currency": "",
+  "response_code": "",
+  "external_id": ""
+}
+```
+
+## Transaction Status
 
 When checking for transactions, you will receive a `response_code`, this are all the possible responses you will get. The most common ones are:
 
@@ -22,7 +44,7 @@ The merchant tried to transaction with the wrong CVV code. You could ask the mer
 
 The card is current inactive per your activation configuration. You could either ask the merchant to retry at a different date or activate the card in the API ou admin dashboard.
 
-### 190 Card not found - expiry date mismatch
+#### 190 Card not found - expiry date mismatch
 
 The transaction failed because the wrong expiration date was provided. You should ask the merchant to retry with the correct information.
 

@@ -77,3 +77,7 @@ Failure to connect to Bank 3's API.
 #### api_error
 
 API errors cover any other type of problem (e.g., a temporary problem with Bank 3's servers), and are extremely uncommon.
+
+# Service Status
+
+We provide a full status page you can follow to check any updates on the status of our APIs and the overall infrastructure. Check it out [here](https://status.bank3.com.br).
