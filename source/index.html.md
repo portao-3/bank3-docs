@@ -126,7 +126,7 @@ curl -X POST https://api.bank3.com.br/cards \
   -H 'Authorization: Bearer {token}' \
   -D '{
     "amount": "",
-    type: "",
+    "type": "",
     "currency": "",
     "maxPercentageApproval": "",
     "minPercentageApproval": "",
